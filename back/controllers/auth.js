@@ -1,5 +1,6 @@
 const { response } = require('express');
 const Usuario = require('../models/Usuario');
+const bcrypt = require('bcryptjs');
 
 
 // Metodo encargado de realizar la creacion del usuario
@@ -22,6 +23,10 @@ const crearUsuario = async(req, res = response) => {
 
         // En caso de no existir en la base de datos actual
         const dbUser = new Usuario(req.body);
+
+        // Hashear la contraseña
+        const salt = bcrypt.genSaltSync();
+        dbUser.password = bcrypt.hashSync( password, salt );
 
         await dbUser.save();
 
