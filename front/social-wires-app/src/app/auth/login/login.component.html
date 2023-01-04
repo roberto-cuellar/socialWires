@@ -1,1 +1,26 @@
-<p>login works!</p>
+<button (click)="irCrearCuenta()">Sign up</button>
+
+<!-- <br>
+<label for="nickname">Nickname</label>
+<br>
+<input autocomplete="false" type="text" id="nickname" name="nickname" placeholder="Nickname">
+
+
+<br>
+<label for="name">Name</label>
+<br>
+<input autocomplete="false" type="text" id="name" name="name" placeholder="Full name">
+ -->
+<form [formGroup]="loginForm">
+    <br>
+    <label for="emailAdress">Email adress</label>
+    <br>
+    <input formControlName="email"  type="email" id="emailAdress" name="emailAdress" placeholder="example@gmail.com">
+    
+    <br>
+    <label for="password">Password</label>
+    <input formControlName="password" type="password" id="password" name="password" >
+    
+    <br>
+</form>
+<button (click)="login()">Sign in</button>
