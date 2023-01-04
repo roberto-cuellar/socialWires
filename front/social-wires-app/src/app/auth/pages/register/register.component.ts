@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ){}
 
   // Metodo encargado de redireccionar a la vista de login
@@ -38,6 +40,15 @@ export class RegisterComponent {
     
     // Se obtienen los valores para realizar el login
     const {email,password,nickname,name} = this.registerForm.value;
+
+    this.authService.registro( name, email, password, nickname ).subscribe(ok =>{
+      if(ok){
+        this.router.navigateByUrl('/landing');
+      }else{
+        console.error('No se pudo realizar el registro');
+        
+      }        
+    })
     console.log('Email: ',email,', Password: ',password, ', name: ',name,', nickname: ', nickname); 
   }
 

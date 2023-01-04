@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ){}
 
   // Metodo encargado de realizar el posteo de la informacion de usuario para realizar el login
@@ -32,9 +34,17 @@ export class LoginComponent {
     // Se obtienen los valores para realizar el login y su validacion
     const {email,password} = this.loginForm.value;
     console.log('Email: ',email,', Password: ',password); 
+    this.authService.login( email, password )
+      .subscribe( ok => {
+
+        if ( ok === true ) {
+          this.router.navigateByUrl('/landing');
+        } else {
+          console.log('No se pudo completar el login');          
+        }
+      });
     
     // Se redirecciona utilizando un path absoluto hacia la pagina de landing
-    this.router.navigateByUrl('/landing');
   }
 
   // Metodo encargado de ir a la vista de crear cuenta

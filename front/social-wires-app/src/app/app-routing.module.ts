@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ValidarTokenGuard } from './guards/validar-token.guard';
 
 /**
  * Configuracion del lazy load para los modulos con y sin guards
@@ -11,7 +12,9 @@ const routes: Routes = [
   },
   {
     path: 'landing',
-    loadChildren: () => import('./protected/protected.module').then( m => m.ProtectedModule )
+    loadChildren: () => import('./protected/protected.module').then( m => m.ProtectedModule ),
+    canActivate: [ ValidarTokenGuard ],
+    canLoad: [ ValidarTokenGuard ]
   },
   {
     path: '**',
