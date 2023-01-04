@@ -18,6 +18,8 @@ app.use( express.json() );
 // Rutas
 app.use( '/auth', require('./routes/auth') );
 
+app.use( '/message', require('./routes/messages') );
+
 app.listen( process.env.PORT, () => {
     console.log(`Servidor corriendo en puerto ${ process.env.PORT }`);
 });

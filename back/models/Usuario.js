@@ -19,6 +19,7 @@ const UsuarioSchema = Schema({
         type: String,
         required: true
     },
+    messages: [{title: String, body: String, time: String, date: String}]
 });
 
 module.exports = model('Usuario', UsuarioSchema );
