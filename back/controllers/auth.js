@@ -49,7 +49,55 @@ const crearUsuario = async(req, res = response) => {
 
 }
 
+const loginUsuario = async (req, res) => {
+
+    const { email, password } = req.body; 
+
+    try {
+        // Se valida si existe un usuario con el email 
+        const dbUser = await Usuario.findOne({ email });
+
+        if(  !dbUser ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'El correo no existe'
+            });
+        }
+
+        // Se valida si el password hace match
+        const validPassword = bcrypt.compareSync( password, dbUser.password );
+
+        if ( !validPassword ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'La contraseña no es válida'
+            });
+        }
+
+
+         // Respuesta del servicio
+         return res.json({
+            ok: true,
+            uid: dbUser.id,
+            name: dbUser.name,
+        });
+
+
+        
+    } catch (error) {
+        console.log(error);
+
+        return res.status(500).json({
+            ok: false,
+            msg: 'Ocurrió un error, por favor hable con el administrador.'
+        })
+        
+
+    }
+}
+
 
 module.exports = {
-    crearUsuario
+    crearUsuario,
+    loginUsuario
 }
