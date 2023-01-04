@@ -57,7 +57,7 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
   // Metodo encargado de actualizar la fecha cada minuto
   temporizadorFecha(){
     this.timer = setInterval(
-      this.obtenerFecha,1000
+      this.obtenerFecha,60000
     )
   }
 
@@ -65,8 +65,8 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
   obtenerFecha = () =>{
     const fecha = new Date();
     const fechaAux = fecha.getHours()+':'+ fecha.getMinutes()+' '+ (Number(fecha.getDay())+1)+'/'+ (Number(fecha.getMonth())+1)+'/'+ fecha.getFullYear()
-    console.log('Obteniendo fecha: ',fechaAux);    
     this.fechaMostrar = fechaAux;
+    this.createMessagePreviewObject.fecha = fechaAux;
     this.ref.detectChanges();
   }
 
