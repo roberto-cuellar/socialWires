@@ -1,1 +1,49 @@
-<p>create-messages works!</p>
+<h1>Create message</h1>
+<form [formGroup]="createMessageForm">
+    <br>
+    <label for="title">Title messages</label>
+    <br>
+    <input 
+        formControlName="title"  
+        type="text" 
+        id="title" 
+        name="title" 
+        maxlength="70"
+        placeholder="talk about me"
+        (keyup)="actualizarPreview()"
+        >
+    
+    <br>
+    <label for="messages">Messages</label>
+    <br>
+    <input 
+        formControlName="messages"
+        type="messages" 
+        id="messages" 
+        name="messages" 
+        maxlength="700"
+        placeholder="create message for share whit friends. Max 700 chars"
+        (keyup)="actualizarPreview()"
+        >
+    
+    <br>
+</form>
+<button (click)="share()">Share</button>
+
+
+<!-- Preview del mensaje que se va a crear -->
+<div class="container">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{createMessagePreviewObject.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{createMessagePreviewObject.messages}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <mat-card-subtitle>{{fechaMostrar}}</mat-card-subtitle>
+            <mat-card-subtitle>{{createMessagePreviewObject.usuario}}</mat-card-subtitle>
+        </mat-card-actions>
+      </mat-card>
+
+</div>

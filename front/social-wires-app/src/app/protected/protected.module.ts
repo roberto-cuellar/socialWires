@@ -7,6 +7,12 @@ import { CreateMessagesComponent } from './pages/create-messages/create-messages
 import { MyMessagesComponent } from './pages/my-messages/my-messages.component';
 import { SeeAllMessagesComponent } from './pages/see-all-messages/see-all-messages.component';
 
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +23,12 @@ import { SeeAllMessagesComponent } from './pages/see-all-messages/see-all-messag
   ],
   imports: [
     CommonModule,
-    ProtectedRoutingModule
+    ProtectedRoutingModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    ReactiveFormsModule
   ]
 })
 export class ProtectedModule { }
