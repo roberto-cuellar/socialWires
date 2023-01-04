@@ -29,9 +29,12 @@ export class LoginComponent {
       return
     }
     
-    // Se obtienen los valores para realizar el login
+    // Se obtienen los valores para realizar el login y su validacion
     const {email,password} = this.loginForm.value;
-    console.log('Email: ',email,', Password: ',password);   
+    console.log('Email: ',email,', Password: ',password); 
+    
+    // Se redirecciona utilizando un path absoluto hacia la pagina de landing
+    this.router.navigateByUrl('/landing');
   }
 
   // Metodo encargado de ir a la vista de crear cuenta
