@@ -75,7 +75,9 @@ export class SeeAllMessagesComponent implements OnInit {
     if(!!!date){          
       
     }else{
-      dateString = this.messagesService.formatearDate(date);
+      const theDate =  new Date(Date.parse(date));
+      const localDate = theDate.toLocaleString().split(",")[0];
+      dateString = localDate;
     }
     this.actualizarRegistros(dateString,title);    
   }

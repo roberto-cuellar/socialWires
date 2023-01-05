@@ -1,33 +1,37 @@
-<h1>All Messages</h1>
+<div class="mg-x my-3">
+  <h1>All Messages</h1>
 
-<form [formGroup]="allMessagesForm">
+  <form [formGroup]="allMessagesForm" class="generic-form">
 
-    <br>
-    <label for="title">What search?</label>
-    <br>
-    <input type="title" formControlName="title" (ngModelChange)="cambioSelector($event)" >
+      <mat-form-field class="full-width">
+        <mat-label>What search?</mat-label>
+        <input matInput type="title" formControlName="title" (ngModelChange)="cambioSelector($event)" >
+      </mat-form-field>
 
+      <mat-form-field appearance="fill" class="full-width"> 
+        <mat-label>Choose a date</mat-label>
+        <input matInput formControlName="date" [matDatepicker]="picker" (ngModelChange)="cambioSelector($event)">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-    <br>
-    <label for="date">Date select</label>
-    <br>
-    <input type="date" formControlName="date" (ngModelChange)="cambioSelector($event)" >
+      <div class="container">
 
-    <div class="container">
+          <mat-card class="cards  my-3" *ngFor="let entidad of allMessagesEntidad; let i = index">
+              <mat-card-header>
+                <mat-card-title>{{entidad.title}}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{entidad.messages}}</p>
+              </mat-card-content>
+              <mat-card-actions class="card-actions">
+                  <mat-card-subtitle>{{entidad.fecha}}</mat-card-subtitle>
+                  <mat-card-subtitle class="card-name-foot">{{entidad.usuario}}</mat-card-subtitle>
+              </mat-card-actions>
+            </mat-card>
 
-        <mat-card class="example-card" *ngFor="let entidad of allMessagesEntidad; let i = index">
-            <mat-card-header>
-              <mat-card-title>{{entidad.title}}</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-              <p>{{entidad.messages}}</p>
-            </mat-card-content>
-            <mat-card-actions>
-                <mat-card-subtitle>{{entidad.fecha}}</mat-card-subtitle>
-                <mat-card-subtitle>{{entidad.usuario}}</mat-card-subtitle>
-            </mat-card-actions>
-          </mat-card>
+      </div>
 
-    </div>
-
-</form>
+  </form>
+</div>

@@ -19,6 +19,7 @@ import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialComponentsModule } from './material-components/material-components.module';
 
 @NgModule({
   declarations: [
@@ -30,16 +31,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ProtectedRoutingModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialComponentsModule,
+    MatButtonModule
   ],
   
 })

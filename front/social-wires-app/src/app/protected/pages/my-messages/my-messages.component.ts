@@ -67,13 +67,17 @@ export class MyMessagesComponent implements OnInit {
 
   // Metodo encargado de realizar la busqueda si existe fecha seleccionada
   cambioSelector(evento:string){
-    const {date} = this.myMessagesForm.value;
+    let {date} = this.myMessagesForm.value;
+    const theDate =  new Date(Date.parse(date));
+    const localDate = theDate.toLocaleString().split(",")[0];
+    date = localDate;
+
     if(!!!date){      
       this.actualizarRegistros(this.uid);     
       return
     }
-    const dateString = this.messagesService.formatearDate(date);
-    this.actualizarRegistros(this.uid,dateString);
+    // const dateString = this.messagesService.formatearDate(date);
+    this.actualizarRegistros(this.uid,date);
   }
 
 

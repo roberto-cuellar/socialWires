@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { TokenInterceptorService } from './protected/interceptors/token-interceptor.service';
+import { MaterialComponentsModule } from './protected/material-components/material-components.module';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { TokenInterceptorService } from './protected/interceptors/token-intercep
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialComponentsModule
   ],
   providers: [
     {

@@ -1,27 +1,25 @@
-<button (click)="irLogin()">Sign in</button>
+<button mat-raised-button class="full-width" color="primary" (click)="irLogin()">Sign in</button>
 
-<form [formGroup]="registerForm">
-    <br>
-    <label for="nickname">Nickname</label>
-    <br>
-    <input formControlName="nickname" autocomplete="false" type="text" id="nickname" name="nickname" placeholder="Nickname">
+<form [formGroup]="registerForm" class="generic-form">
+    <mat-form-field class="full-width">
+        <mat-label>Nickname</mat-label>
+        <input matInput formControlName="nickname" autocomplete="false" type="text" id="nickname" name="nickname" placeholder="Nickname">
+    </mat-form-field>
 
+    <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" autocomplete="false" type="text" id="name" name="name" placeholder="Full name">
+    </mat-form-field>
+  
+    <mat-form-field class="full-width">
+        <mat-label>Email adress</mat-label>
+        <input  matInput formControlName="email"  type="email" id="emailAdress" name="emailAdress" placeholder="example@gmail.com">
+    </mat-form-field>   
 
-    <br>
-    <label for="name">Name</label>
-    <br>
-    <input formControlName="name" autocomplete="false" type="text" id="name" name="name" placeholder="Full name">
+    <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" id="password" name="password" >
+    </mat-form-field>    
 
-    <br>
-    <label for="emailAdress">Email adress</label>
-    <br>
-    <input formControlName="email"  type="email" id="emailAdress" name="emailAdress" placeholder="example@gmail.com">
-    
-    <br>
-    <label for="password">Password</label>
-    <br>
-    <input formControlName="password" type="password" id="password" name="password" >
-    
-    <br>
 </form>
-<button (click)="crearCuenta()">Create</button>
+<button class="full-width" mat-raised-button color="basic" (click)="crearCuenta()">Create</button>

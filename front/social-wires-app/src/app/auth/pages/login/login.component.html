@@ -1,26 +1,22 @@
-<button (click)="irCrearCuenta()">Sign up</button>
-
-<!-- <br>
-<label for="nickname">Nickname</label>
-<br>
-<input autocomplete="false" type="text" id="nickname" name="nickname" placeholder="Nickname">
 
 
-<br>
-<label for="name">Name</label>
-<br>
-<input autocomplete="false" type="text" id="name" name="name" placeholder="Full name">
- -->
-<form [formGroup]="loginForm">
-    <br>
-    <label for="emailAdress">Email adress</label>
-    <br>
-    <input formControlName="email"  type="email" id="emailAdress" name="emailAdress" placeholder="example@gmail.com">
-    
-    <br>
-    <label for="password">Password</label>
-    <input formControlName="password" type="password" id="password" name="password" >
-    
-    <br>
-</form>
-<button (click)="login()">Sign in</button>
+
+    <button mat-raised-button class="full-width" color="primary" (click)="irCrearCuenta()">Sign up</button>
+
+    <form [formGroup]="loginForm" class="generic-form">
+        <mat-form-field class="full-width">
+            <mat-label>Email adress</mat-label>
+            <input matInput formControlName="email"  type="email" id="emailAdress" name="emailAdress" placeholder="example@gmail.com">
+        </mat-form-field>
+        
+        <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" id="password" name="password" >
+        </mat-form-field>
+        
+    </form>
+    <button class="full-width" mat-raised-button color="basic" (click)="login()">Sign in</button>
+
+
+
+

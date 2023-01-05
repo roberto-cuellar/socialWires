@@ -49,7 +49,7 @@ export class RegisterComponent {
         
       }        
     })
-    console.log('Email: ',email,', Password: ',password, ', name: ',name,', nickname: ', nickname); 
+
   }
 
 }

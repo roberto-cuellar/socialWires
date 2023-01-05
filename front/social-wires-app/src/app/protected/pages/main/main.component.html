@@ -1,10 +1,12 @@
-<p>main protected works!</p>
-<h2>{{name | titlecase}}</h2>
-
-<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+<mat-toolbar>
+  <span class="spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>menu</mat-icon>
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu  xPosition="before" #menu="matMenu">
+    <button mat-menu-item disabled="true">      
+      <span><strong>{{name | titlecase}}</strong></span>
+    </button>
     <button mat-menu-item (click)="irCrearMensaje()">
       <mat-icon>edit_square</mat-icon>
       <span>Create Messages</span>
@@ -22,4 +24,5 @@
       <span>Logout</span>
     </button>
   </mat-menu>
+</mat-toolbar>
 <router-outlet></router-outlet>
