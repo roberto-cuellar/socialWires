@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProtectedRoutingModule } from './protected-routing.module';
 import { MainComponent } from './pages/main/main.component';
-import { CreateMessagesComponent } from './pages/create-messages/create-messages.component';
+import { CreateMessagesComponent, ModalConfirmacionComponent } from './pages/create-messages/create-messages.component';
 import { MyMessagesComponent } from './pages/my-messages/my-messages.component';
 import { SeeAllMessagesComponent } from './pages/see-all-messages/see-all-messages.component';
 
@@ -26,7 +26,8 @@ import { MaterialComponentsModule } from './material-components/material-compone
     MainComponent,
     CreateMessagesComponent,
     MyMessagesComponent,
-    SeeAllMessagesComponent
+    SeeAllMessagesComponent,
+    ModalConfirmacionComponent
   ],
   imports: [
     CommonModule,

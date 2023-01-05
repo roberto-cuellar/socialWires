@@ -10,7 +10,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
   ],
@@ -25,7 +25,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatNativeDateModule,
     MatInputModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
+    
   ],exports:[
     MatMenuModule,
     MatButtonModule,
@@ -36,7 +38,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatNativeDateModule,
     MatInputModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ]
 })
 export class MaterialComponentsModule { }

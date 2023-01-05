@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
 
 import { CreateMessageInterface } from '../../../utils/interfaces';
 import { MessagesService } from '../../services/messages.service';
@@ -33,10 +34,13 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
 
   private timer:any;
 
+  public msgModal: string = '';
   constructor(
     private fb: FormBuilder,
     private ref: ChangeDetectorRef,
-    private messageService: MessagesService
+    private messageService: MessagesService,
+    // Inyeccion modal
+    public dialog: MatDialog
   ){}
 
   ngOnInit(): void {
@@ -70,6 +74,7 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
     )
   }
 
+
   // Metodo encargado de obtener el tiempo actual y actualizarlo en la previsualizacion
   obtenerFecha = () =>{
     const fecha = new Date();
@@ -83,10 +88,20 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
   share(){  
       const { title, messages } = this.createMessageForm.value;
       this.messageService.crearMensaje(title, messages, this.name, this.uid).subscribe(response=>{
-        console.log('Response', response);        
+        if(response.ok){
+          this.abrirModal();
+        }
       })
 
   }
+
+  // Metodo encargado de setear la info del modal y su apertura
+  abrirModal(){
+    this.dialog.open(ModalConfirmacionComponent,{
+     
+  });
+  }
+
 
   // Metodo encargado de actualizar el preview de la card
   actualizarPreview(){
@@ -102,4 +117,11 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
     clearInterval(this.timer);
   }
 
+}
+
+@Component({
+  selector: 'modal-confirmacion-creacion',
+  templateUrl: 'modal-confirmacion.component.html' 
+})
+export class ModalConfirmacionComponent {
 }
