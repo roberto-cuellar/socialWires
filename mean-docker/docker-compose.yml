@@ -1,0 +1,21 @@
+version: '2' # specify docker-compose version
+
+# Se definen los contenedores/servicios a correr
+services:
+  angular: # Nombre del primer servicio
+    build: ../front/social-wires-app # ruta del directorio
+    ports:
+      - "4200:4200" # Se especifica el puerto
+
+  express: # Nombre del segundo servicio
+    build: ../back # ruta del directorio
+    ports:
+      - "4000:4000" # Se especifica el puerto
+    links:
+      - database # Se puede linkear al servicio del database
+
+
+  database:  # Nombre del segundo servicio
+    image: mongo # imagen 
+    ports:
+      - "27017:27017" # Se especifica el puerto
