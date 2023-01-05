@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +11,8 @@ export class MainComponent {
 
   constructor(
     private router: Router,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private authService: AuthService
   ){}
 
   // Metodo encargado de redireccionar a la vista de crear mensaje
@@ -26,6 +28,11 @@ export class MainComponent {
   // Metodo encargado de redireccionar a la vista de todos los mensajes
   irMensajes(){
     this.router.navigate(['all-messages'], { relativeTo: this.activateRoute });
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigateByUrl('/');
   }
 
 }

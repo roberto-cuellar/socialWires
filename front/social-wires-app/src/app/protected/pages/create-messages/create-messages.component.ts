@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ChangeDetectorRef } from '@angular/core';
 
 import { CreateMessageInterface } from '../../../utils/interfaces';
+import { MessagesService } from '../../services/messages.service';
 @Component({
   selector: 'app-create-messages',
   templateUrl: './create-messages.component.html',
@@ -31,7 +32,8 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private messageService: MessagesService
   ){}
 
   ngOnInit(): void {
@@ -71,7 +73,13 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
   }
 
   // Metodo encargado de compartir el mensaje
-  share(){    }
+  share(){  
+      const { title, messages } = this.createMessageForm.value;
+      this.messageService.crearMensaje(title, messages, 'Roberto', '63b5f5dc66e271507017d5dd').subscribe(response=>{
+        console.log('Response', response);        
+      })
+
+  }
 
   // Metodo encargado de actualizar el preview de la card
   actualizarPreview(){

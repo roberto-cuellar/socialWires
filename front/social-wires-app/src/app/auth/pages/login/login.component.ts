@@ -33,7 +33,7 @@ export class LoginComponent {
     
     // Se obtienen los valores para realizar el login y su validacion
     const {email,password} = this.loginForm.value;
-    console.log('Email: ',email,', Password: ',password); 
+
     this.authService.login( email, password )
       .subscribe( ok => {
 

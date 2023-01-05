@@ -16,6 +16,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -36,7 +38,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  
 })
 export class ProtectedModule { }

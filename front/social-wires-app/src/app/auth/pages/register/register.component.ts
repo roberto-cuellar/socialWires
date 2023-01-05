@@ -34,7 +34,7 @@ export class RegisterComponent {
 
     if(this.registerForm.invalid){
       this.registerForm.markAllAsTouched();
-      console.log('Formulario invalido');      
+      //console.log('Formulario invalido');      
       return
     }
     
