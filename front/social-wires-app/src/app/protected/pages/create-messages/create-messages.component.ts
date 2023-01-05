@@ -23,6 +23,9 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
     fecha: ''
   }
 
+  public name: string = '';
+  private uid: string = '';
+
   public genericTitle: string = 'Aquí iría el título de tu mensaje';
   public genericMessages: string = 'Tu mensaje se vería así en este espacio, se creativo, estamos emocionados por leerte.';
 
@@ -37,8 +40,12 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
   ){}
 
   ngOnInit(): void {
+
+    this.name = localStorage.getItem('username')? localStorage.getItem('username')!: '';
+    this.uid = localStorage.getItem('uid')? localStorage.getItem('uid')!: '';
+
     // Se obtiene el usuario del servicio de autenticacion
-    this.createMessagePreviewObject.usuario ='Roberto Cuellar';
+    this.createMessagePreviewObject.usuario = this.name;
 
     // Actualizacion inicial del titulo y el mensaje
     this.actualizacionTitleMessage();
@@ -75,7 +82,7 @@ export class CreateMessagesComponent implements OnInit, OnDestroy {
   // Metodo encargado de compartir el mensaje
   share(){  
       const { title, messages } = this.createMessageForm.value;
-      this.messageService.crearMensaje(title, messages, 'Roberto', '63b5f5dc66e271507017d5dd').subscribe(response=>{
+      this.messageService.crearMensaje(title, messages, this.name, this.uid).subscribe(response=>{
         console.log('Response', response);        
       })
 

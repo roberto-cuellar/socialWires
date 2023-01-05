@@ -20,5 +20,8 @@ router.post( '/add', [
 // Recuperar mensajes para un usuario
 router.get( '/user-messages', validarJWT, obtainUserMessage );
 
+// Recuperar mensajes para todos los usuarios
+router.get( '/user-messages', validarJWT, obtainUserMessage );
+
 
 module.exports = router;

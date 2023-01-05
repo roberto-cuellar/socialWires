@@ -19,7 +19,7 @@ const UsuarioSchema = Schema({
         type: String,
         required: true
     },
-    messages: [{title: String, body: String, time: String, date: String}]
+    messages: [{title: String, body: String, time: String, date: String, name:String}]
 });
 
 module.exports = model('Usuario', UsuarioSchema );

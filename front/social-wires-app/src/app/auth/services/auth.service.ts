@@ -73,6 +73,8 @@ export class AuthService {
               uid: resp.uid!,
               email: resp.email!
             }
+            localStorage.setItem('username', this._usuario.name );
+            localStorage.setItem('uid', this._usuario.uid );
 
             return resp.ok;
           }),

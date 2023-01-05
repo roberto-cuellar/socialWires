@@ -9,6 +9,8 @@ import { AuthService } from '../../../auth/services/auth.service';
 })
 export class MainComponent {
 
+  public name: string = localStorage.getItem('username')? localStorage.getItem('username')!: '';
+
   constructor(
     private router: Router,
     private activateRoute: ActivatedRoute,

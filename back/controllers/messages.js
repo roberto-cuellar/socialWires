@@ -88,12 +88,12 @@ const obtainUserMessage = async(req=request, res = response) => {
 const obtainAllMessages = async(req=request, res = response) => { 
     
     // Se extraen los valores del query que se utilizaran 
-    const  {date,uid}   = req.query;
+    const  {date,text}   = req.query;
 
     try {
 
         // Se busca en la bd el usuario 
-        const dbUser = await Usuario.findOne({_id : uid});
+        const dbUser = await Usuario.findOne({});
 
         const consulta = dbUser.messages?.filter(register => register.date == date);
 
