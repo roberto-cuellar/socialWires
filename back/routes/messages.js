@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { validarJWT } = require('../middlewares/validar-jwt');
-const { guardarMessage, obtainUserMessage } = require('../controllers/messages');
+const { guardarMessage, obtainUserMessage, obtainAllMessages } = require('../controllers/messages');
 
 const router = Router();
 
@@ -21,7 +21,7 @@ router.post( '/add', [
 router.get( '/user-messages', validarJWT, obtainUserMessage );
 
 // Recuperar mensajes para todos los usuarios
-router.get( '/user-messages', validarJWT, obtainUserMessage );
+router.get( '/all-user-messages', validarJWT, obtainAllMessages );
 
 
 module.exports = router;

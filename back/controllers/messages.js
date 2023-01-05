@@ -1,6 +1,7 @@
 const { response, request } = require('express');
 const Usuario = require('../models/Usuario');
 const { generarJWT } = require('../helpers/jwt');
+const { merge } = require('../routes/auth');
 
 
 // Metodo encargado de realizar la creacion del registro de un message
@@ -93,17 +94,39 @@ const obtainAllMessages = async(req=request, res = response) => {
     try {
 
         // Se busca en la bd el usuario 
-        const dbUser = await Usuario.findOne({});
+        const dbUsers = await Usuario.find({});
+        let msgs = [];
+        if(dbUsers.length > 0) {
+            dbUsers.forEach(usuario => {
+                // Se agregan todos los usuarios al array de mensajes
+                msgs = [...msgs, ...usuario.messages];
+            })
 
-        const consulta = dbUser.messages?.filter(register => register.date == date);
+            // Se realiza el filtro de fecha
+            if(date){
+                msgs = msgs.filter(register => register.date == date);
+            }
 
-        // Respuesta del servicio
-        return res.json({
-            ok: true,
-            name: dbUser.name,
-            payload: consulta
-        });       
+            if(text){
+                msgs = msgs.filter(register => register.title.includes(text));
+            }
+
+            // Respuesta del servicio
+            return res.json({
+                ok: true,
+                data: msgs
+            });       
+            
+        }else{
+            // Respuesta del servicio
+            return res.json({
+                ok: false,
+                msg: 'No se encontraron mensajes registrados'
+            });       
         
+        }
+
+
     } catch (error) {
         console.log(error);
         return res.status(500).json({
@@ -116,5 +139,6 @@ const obtainAllMessages = async(req=request, res = response) => {
 
 module.exports = {
     guardarMessage,
-    obtainUserMessage
+    obtainUserMessage,
+    obtainAllMessages
 }
